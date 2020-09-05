@@ -1,21 +1,31 @@
 from tkinter import *
 import Attendance as atten
 import FaceRecognition as face
+import AddPhoto as photo
+from PIL import Image, ImageTk
 
 # **** Window initialization, sizing, and positioning
 root = Tk()  # window render object
 menu = Menu(root)
 root.config(menu=menu)
 
+cameraFeedButton = PhotoImage(file = 'Images/button.png')
 
 def window(main):
     main.title("Home Security")
     main.update_idletasks()
-    width = 500
-    height = 200
-    x = (main.winfo_screenwidth() // 2) - (width // 2)
-    y = (main.winfo_height() // 2) + height
-    main.geometry('{}x{}+{}+{}'.format(width, height, x, y))
+    ws = main.winfo_screenwidth() # width of the screen
+    hs = main.winfo_screenheight()
+    w = 1050
+    h = 500
+    x = (ws/2) - (w/2)
+    y = (hs/2) - (h/2)
+    main.geometry('%dx%d+%d+%d' % (w, h, x, y))
+    # width = 1050
+    # height = 500
+    # x = (main.winfo_screenwidth() // 2) - (width // 2)
+    # y = (main.winfo_height() // 2) + height
+    # main.geometry('{}x{}+{}+{}'.format(width, height, x, y))
 
 
 # ****
@@ -32,17 +42,20 @@ menu.add_cascade(label="Help", menu=helpMenu)
 helpMenu.add_command(label="I can't help", command=quit)
 
 # Labels
-labelIntro = Label(root, text="This program will use facial recognition with your webcam")
-labelIntro.pack()
+
 # ****
 
 # **** Buttons
-button1 = Button(root, text="Open WebCam", command=atten.runCamera)
+button1 = Button(root, text = 'Live Feed', command=atten.runCamera)
 button2 = Button(root, text="Picture Test", command=face.showImage)
 button3 = Button(root, text="Exit", fg='red', command=quit)
+button4 = Button(root, text="Add Photos", command=photo.showWindow)
 button1.pack(pady=20, padx=2)
 button2.pack(pady=20, padx=2)
+button4.pack(pady=20, padx=2)
 button3.pack(padx=2)
+
+
 # ****
 
 # **** Status Bar
