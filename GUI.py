@@ -50,10 +50,10 @@ button1 = Button(root, text = 'Live Feed', command=atten.runCamera)
 button2 = Button(root, text="Picture Test", command=face.showImage)
 button3 = Button(root, text="Exit", fg='red', command=quit)
 button4 = Button(root, text="Add Photos", command=photo.showWindow)
-button1.pack(pady=20, padx=2)
-button2.pack(pady=20, padx=2)
-button4.pack(pady=20, padx=2)
-button3.pack(padx=2)
+button1.place(x = 300, y = 120)
+button2.place(x = 600, y = 120)
+button4.place(x = 300, y = 240)
+button3.place(x = 600, y = 240)
 
 
 # ****
